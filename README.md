@@ -2,6 +2,8 @@
 
 The E-Catalog project provides a web-based platform for creating and sharing collections of digital heritage materials. The system aims to simplify catalog management while supporting collaboration between organizations and researchers.
 
+For an overview of the backend modules and frontend requirements, see the [specification](docs/specification.md).
+
 ## Getting Started
 
 ### Installing Dependencies
