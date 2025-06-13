@@ -30,6 +30,17 @@ node server.js
 
 The server listens on port **3001** by default.
 
+## API Overview
+
+The backend exposes REST endpoints for products, banners, analytics and
+geolocation. Notable routes include:
+
+- `GET /api/products/search` – advanced search and filtering
+- `POST /api/products/import` – bulk product import
+- `GET /api/products/export` – export all products
+- `CRUD /api/banners` – manage promotional banners
+- `GET /api/geolocation` – return basic geolocation data for the requester
+
 ### Launch the Frontend
 
 The `frontend/` directory contains a minimal `index.html`. Open this file directly in your browser or run:

@@ -14,6 +14,30 @@ async function listProducts(req, res) {
   res.json(products);
 }
 
+async function searchProducts(req, res) {
+  try {
+    const { q, category, status, minPrice, maxPrice } = req.query;
+    const filter = {};
+    if (q) {
+      filter.$or = [
+        { name: { $regex: q, $options: 'i' } },
+        { description: { $regex: q, $options: 'i' } }
+      ];
+    }
+    if (category) filter.category = category;
+    if (status) filter.status = status;
+    if (minPrice || maxPrice) {
+      filter.price = {};
+      if (minPrice) filter.price.$gte = parseFloat(minPrice);
+      if (maxPrice) filter.price.$lte = parseFloat(maxPrice);
+    }
+    const products = await Product.find(filter);
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
 async function getProduct(req, res) {
   try {
     const product = await Product.findById(req.params.id);
@@ -46,4 +70,31 @@ async function deleteProduct(req, res) {
   }
 }
 
-module.exports = { createProduct, listProducts, getProduct, updateProduct, deleteProduct };
+async function bulkImport(req, res) {
+  try {
+    const products = await Product.insertMany(req.body);
+    res.status(201).json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
+async function bulkExport(req, res) {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
+module.exports = {
+  createProduct,
+  listProducts,
+  searchProducts,
+  getProduct,
+  updateProduct,
+  deleteProduct,
+  bulkImport,
+  bulkExport
+};
