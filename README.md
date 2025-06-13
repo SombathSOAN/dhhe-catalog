@@ -2,6 +2,8 @@
 
 E-Catalog provides a simple catalog management platform built with **Node.js** and **Express**. The backend exposes a REST API backed by MongoDB, and a small static frontend is included for quick testing.
 
+For an overview of the backend modules and frontend requirements, see the [specification](docs/specification.md).
+
 ## Getting Started
 
 ### Install Backend Dependencies
