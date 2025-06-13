@@ -1,29 +1,36 @@
 # E-Catalog
 
-The E-Catalog project provides a web-based platform for creating and sharing collections of digital heritage materials. The system aims to simplify catalog management while supporting collaboration between organizations and researchers.
+E-Catalog provides a simple catalog management platform built with **Node.js** and **Express**. The backend exposes a REST API backed by MongoDB, and a small static frontend is included for quick testing.
 
 ## Getting Started
 
-### Installing Dependencies
-
-1. Clone this repository.
-2. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Install frontend packages:
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-### Running the Backend
+### Install Backend Dependencies
 
 ```bash
-python manage.py runserver
+cd backend
+npm install
 ```
 
-### Launching the Frontend
+### Configuration
+
+Set the following environment variables before running the server:
+
+- `MONGODB_URI` – MongoDB connection string (e.g. `mongodb://localhost:27017/ecatalog`)
+- `JWT_SECRET` – secret used to sign JSON Web Tokens
+
+You can create a `.env` file or export the variables in your shell.
+
+### Run the Backend
+
+```bash
+node server.js
+```
+
+The server listens on port **3001** by default.
+
+### Launch the Frontend
+
+The `frontend/` directory contains a minimal `index.html`. Open this file directly in your browser or run:
 
 ```bash
 cd frontend
