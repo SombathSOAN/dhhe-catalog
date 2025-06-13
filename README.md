@@ -34,6 +34,10 @@ npm start
 
 Contributions are welcome! Please open an issue to discuss your proposed changes or submit a pull request.
 
+## Documentation
+
+See the [system specification](docs/specification.md) for an overview of backend and frontend modules and requirements.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
